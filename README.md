@@ -4,7 +4,7 @@ A beautiful, modern weather web application that provides real-time weather info
 
 ![Weather App Screenshot](screenshots/weather-app.png)
 
-## 🌟 Features
+## Features
 
 - **City Search** - Search weather by city name with instant results
 - **Current Weather Display** - Shows temperature, weather description, humidity, and wind speed
@@ -16,14 +16,14 @@ A beautiful, modern weather web application that provides real-time weather info
 - **Error Handling** - Graceful handling of invalid cities and API errors
 - **Loading States** - Visual feedback during data fetching
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **HTML5** - Semantic markup
 - **CSS3** - Modern styling with animations and gradients
 - **JavaScript (ES6+)** - Vanilla JavaScript for interactivity
 - **OpenWeatherMap API** - Weather data source
 
-## 🚀 How to Run
+## How to Run
 
 1. **Clone or download the repository**
    
@@ -54,7 +54,7 @@ bash
    - Press Enter or click the search button
    - Click the star icon to save cities to favorites
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Weather_App/
@@ -68,18 +68,18 @@ Weather_App/
 └── README.md           # This file
 ```
 
-## 🎨 Design Highlights
+## Design Highlights
 
 - **Glassmorphism Effect** - Frosted glass cards for weather data
 - **Animated Gradient Background** - Smooth color transitions
 - **Micro-interactions** - Button hover effects and transitions
 - **Mobile-First** - Fully responsive at all breakpoints
 
-## 🔑 API Key
+## API Key
 
 This project uses the OpenWeatherMap API. The demo includes a public API key for testing purposes. For production use, obtain your own free API key from [OpenWeatherMap](https://openweathermap.org/api).
 
-## 📝 License
+##  License Saim Bakhtiar
 
 MIT License - Feel free to use this project for learning or personal projects.
 
