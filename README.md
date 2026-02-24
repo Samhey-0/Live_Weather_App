@@ -1,3 +1,14 @@
+## Weather App Screenshot
+
+### Dashboard
+![Dashboard](screenshots/Whole_frontend.png)
+
+### Front Page
+![Front Page](screenshots/Front.png)
+
+### Hourly Forecast
+![Hourly Forecast](screenshots/hourly_cast.png)
+
 # WeatherNow - Modern Weather Web App
 
 A beautiful, modern weather web application that provides real-time weather information and 5-day forecasts for cities around the world. Built with vanilla HTML, CSS, and JavaScript.
@@ -82,7 +93,3 @@ This project uses the OpenWeatherMap API. The demo includes a public API key for
 ##  License Saim Bakhtiar
 
 MIT License - Feel free to use this project for learning or personal projects.
-
----
-
-*Built with ❤️ using vanilla web technologies*
