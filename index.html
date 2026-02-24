@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WeatherNow - Modern weather web app with current weather and 5-day forecast">
+    <meta name="keywords" content="weather, forecast, weather app, openweathermap">
+    <meta name="author" content="WeatherNow">
+    <meta name="theme-color" content="#1a1a2e">
+    
+    <title>WeatherNow - Your Weather Companion</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌤️</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-cloud-sun"></i>
+                    <h1>WeatherNow</h1>
+                </div>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            <p class="tagline">Your Weather Companion</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <form id="search-form" class="search-form" role="search">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="city-input" 
+                        placeholder="Search for a city..." 
+                        autocomplete="off"
+                        aria-label="Search for a city"
+                    >
+                    <button type="submit" class="search-btn" aria-label="Search">
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+            
+            <!-- Quick Search Cities -->
+            <div class="quick-cities">
+                <button class="quick-city-btn" data-city="New York">New York</button>
+                <button class="quick-city-btn" data-city="London">London</button>
+                <button class="quick-city-btn" data-city="Tokyo">Tokyo</button>
+                <button class="quick-city-btn" data-city="Sydney">Sydney</button>
+                <button class="quick-city-btn" data-city="Paris">Paris</button>
+                <button class="quick-city-btn" data-city="Dubai">Dubai</button>
+                <button class="quick-city-btn" data-city="Singapore">Singapore</button>
+                <button class="quick-city-btn" data-city="Mumbai">Mumbai</button>
+                <button class="quick-city-btn" data-city="Berlin">Berlin</button>
+                <button class="quick-city-btn" data-city="Toronto">Toronto</button>
+                <button class="quick-city-btn" data-city="Seoul">Seoul</button>
+                <button class="quick-city-btn" data-city="Beijing">Beijing</button>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="loading-container hidden">
+            <div class="spinner"></div>
+            <p>Fetching weather data...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="error" class="error-container hidden">
+            <i class="fas fa-exclamation-circle"></i>
+            <p id="error-message">City not found. Please try again.</p>
+        </div>
+
+        <!-- Weather Alert Notification -->
+        <div id="weather-alert" class="weather-alert hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="alert-message"></span>
+            <button id="alert-close" class="alert-close" aria-label="Close alert">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Weather Content -->
+        <main id="weather-content" class="weather-content hidden">
+            <!-- Current Weather -->
+            <section class="current-weather">
+                <div class="weather-main-card">
+                    <button id="favorite-btn" class="favorite-btn" aria-label="Add to favorites">
+                        <i class="far fa-star"></i>
+                    </button>
+                    
+                    <div class="city-info">
+                        <h2 id="city-name">City Name</h2>
+                        <p id="country">Country</p>
+                        <p id="date" class="current-date"></p>
+                    </div>
+                    
+                    <div class="weather-main">
+                        <img id="weather-icon" src="" alt="Weather condition" class="weather-icon">
+                        <div class="temperature-display">
+                            <span id="temperature">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <p id="weather-description" class="weather-description">Description</p>
+                    </div>
+                </div>
+
+                <!-- Weather Details Grid -->
+                <div class="weather-details">
+                    <div class="detail-card">
+                        <i class="fas fa-thermometer-half"></i>
+                        <div class="detail-info">
+                            <span class="detail-label">Feels Like</span>
+                            <span id="feels-like" class="detail-value">--°C</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <i class="fas fa-tint"></i>
+                        <div class="detail-info">
+                            <span class="detail-label">Humidity</span>
+                            <span id="humidity" class="detail-value">--%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <i class="fas fa-wind"></i>
+                        <div class="detail-info">
+                            <span class="detail-label">Wind Speed</span>
+                            <span id="wind-speed" class="detail-value">-- m/s</span>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <i class="fas fa-compress-arrows-alt"></i>
+                        <div class="detail-info">
+                            <span class="detail-label">Pressure</span>
+                            <span id="pressure" class="detail-value">-- hPa</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hourly Forecast -->
+            <section class="hourly-section">
+                <h3><i class="fas fa-clock"></i> Hourly Forecast</h3>
+                <div id="hourly-container" class="hourly-container">
+                    <!-- Hourly forecast cards will be dynamically inserted here -->
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast -->
+            <section class="forecast-section">
+                <h3><i class="fas fa-calendar-alt"></i> 5-Day Forecast</h3>
+                <div id="forecast-container" class="forecast-container">
+                    <!-- Forecast cards will be dynamically inserted here -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Favorites Section -->
+        <section id="favorites-section" class="favorites-section hidden">
+            <h3><i class="fas fa-star"></i> Favorite Cities</h3>
+            <div id="favorites-container" class="favorites-container">
+                <!-- Favorite cities will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
